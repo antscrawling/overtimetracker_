@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overtime Tracker</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script defer src="/static/app.js"></script>
+  </head>
+  <body>
+    <div class="background-orb orb-one"></div>
+    <div class="background-orb orb-two"></div>
+
+    <main class="shell">
+      <section class="hero panel">
+        <div>
+          <p class="eyebrow">Node.js + SQLite</p>
+          <h1>Overtime Tracker</h1>
+          <p class="lede">
+            Track meetings, accumulate leave automatically, and spend leave only when the balance allows it.
+          </p>
+        </div>
+        <div class="hero-stats" id="summaryCards">
+          <div class="stat-card loading">Loading summary...</div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="panel form-panel">
+          <div class="section-heading">
+            <h2>Record a Meeting</h2>
+            <p>Meeting hours accrue leave at a rate of 1 day for every 7 hours.</p>
+          </div>
+          <form id="meetingForm" class="form-grid">
+            <label>
+              Date
+              <input name="event_date" type="text" placeholder="dd-mm-yyyy" required />
+            </label>
+            <label>
+              Start Time
+              <input name="start_time" type="text" placeholder="hh.mm" required />
+            </label>
+            <label>
+              End Time
+              <input name="end_time" type="text" placeholder="hh.mm" required />
+            </label>
+            <label class="full-width">
+              Title
+              <input name="title" type="text" placeholder="Meeting title" />
+            </label>
+            <button type="submit" class="button primary">Save Meeting</button>
+          </form>
+        </article>
+
+        <article class="panel form-panel">
+          <div class="section-heading">
+            <h2>Take Leave</h2>
+            <p>The backend validates the available leave balance before saving.</p>
+          </div>
+          <form id="leaveForm" class="form-grid">
+            <label>
+              Date
+              <input name="event_date" type="text" placeholder="dd-mm-yyyy" required />
+            </label>
+            <label>
+              Leave Days
+              <input name="leave_days" type="number" step="0.5" min="0.5" placeholder="1" required />
+            </label>
+            <button type="submit" class="button secondary">Save Leave</button>
+          </form>
+        </article>
+      </section>
+
+      <section class="grid lower-grid">
+        <article class="panel form-panel">
+          <div class="section-heading">
+            <h2>Edit Event</h2>
+            <p>Update a meeting or leave record by event ID.</p>
+          </div>
+          <form id="editForm" class="form-grid">
+            <label>
+              Event ID
+              <input name="id" type="number" min="1" required />
+            </label>
+            <label>
+              Type
+              <select name="event_type" required>
+                <option value="meeting">Meeting</option>
+                <option value="leave">Leave</option>
+              </select>
+            </label>
+            <label>
+              Date
+              <input name="event_date" type="text" placeholder="dd-mm-yyyy" />
+            </label>
+            <label class="meeting-field">
+              Start Time
+              <input name="start_time" type="text" placeholder="hh.mm" />
+            </label>
+            <label class="meeting-field">
+              End Time
+              <input name="end_time" type="text" placeholder="hh.mm" />
+            </label>
+            <label class="meeting-field full-width">
+              Title
+              <input name="title" type="text" placeholder="Meeting title" />
+            </label>
+            <label class="leave-field">
+              Leave Days
+              <input name="leave_days" type="number" step="0.5" min="0.5" placeholder="1" />
+            </label>
+            <button type="submit" class="button primary">Update Event</button>
+          </form>
+        </article>
+
+        <article class="panel form-panel">
+          <div class="section-heading">
+            <h2>Delete Event</h2>
+            <p>Remove a record by ID.</p>
+          </div>
+          <form id="deleteForm" class="form-grid compact">
+            <label>
+              Event ID
+              <input name="id" type="number" min="1" required />
+            </label>
+            <button type="submit" class="button danger">Delete Event</button>
+          </form>
+          <p class="hint">Tip: use the list below to pick an ID quickly.</p>
+        </article>
+      </section>
+
+      <section class="panel list-panel">
+        <div class="list-header">
+          <div>
+            <p class="eyebrow">Records</p>
+            <h2>Meetings and Leave</h2>
+          </div>
+          <button id="refreshButton" class="button ghost" type="button">Refresh</button>
+        </div>
+        <div id="message" class="message" aria-live="polite"></div>
+        <div id="eventsList" class="events-list">
+          <div class="loading">Loading events...</div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

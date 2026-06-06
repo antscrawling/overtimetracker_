@@ -1,0 +1,43 @@
+{
+  "name": "raymond-overtime",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "build:installer": "bash scripts/build-installer.sh",
+    "build:windows-package": "bash scripts/build-windows-package.sh",
+    "start:desktop": "electron electron/main.js",
+    "build:windows-exe": "electron-builder --win nsis --publish never"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "better-sqlite3": "^12.4.1",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.joseibay.raymond-overtime.desktop",
+    "productName": "Raymond Overtime",
+    "asar": false,
+    "files": [
+      "server.js",
+      "electron/**/*",
+      "frontend/**/*",
+      "src/**/*",
+      "package.json"
+    ],
+    "extraMetadata": {
+      "main": "electron/main.js"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "raymond-overtime-${version}-setup.${ext}"
+    }
+  }
+}
