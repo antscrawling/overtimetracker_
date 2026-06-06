@@ -3,7 +3,7 @@
 This project is now a Node.js app using Express + SQLite storage (`src/overtime.db`).
 
 The previous Python/FastAPI entrypoint has been removed. Use Node commands only.
-
+ 
 ## Rules Implemented
 
 - Event types are `MEETING` and `LEAVE`.
@@ -93,6 +93,10 @@ Open the frontend in your browser at:
 Open docs:
 
 - API health: `http://127.0.0.1:3000/health`
+
+## License
+
+MIT - see the LICENSE file.
 
 ## Endpoints
 
