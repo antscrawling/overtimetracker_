@@ -13,7 +13,7 @@ The previous Python/FastAPI entrypoint has been removed. Use Node commands only.
 - Earned leave days use floor logic:
 	- `earned_leave_days = floor(total_meeting_hours / 7)`
 - Leave cannot be taken beyond available balance.
-
+  
 ## Run
 
 Install dependencies:
