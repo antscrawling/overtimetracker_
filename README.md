@@ -51,6 +51,14 @@ This creates:
 
 - raymond-overtime-1.0.0-windows.zip
 
+Windows Node.js installation (before first run):
+
+1. Download Node.js LTS from https://nodejs.org/en/download.
+2. Run the Windows installer and keep npm selected.
+3. Open Command Prompt and verify:
+	- node -v
+	- npm -v
+
 The Windows zip includes:
 
 - start.bat

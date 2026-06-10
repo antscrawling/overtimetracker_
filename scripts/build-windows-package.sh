@@ -63,6 +63,13 @@ Raymond Overtime - Windows Package
 Requirements:
 1. Node.js LTS installed (includes npm)
 
+Install Node.js on Windows:
+1. Download Node.js LTS: https://nodejs.org/en/download
+2. Run the installer and keep npm selected
+3. Open Command Prompt and verify:
+  - node -v
+  - npm -v
+
 Usage:
 1. Double-click install_dependencies.bat (first time only)
 2. Double-click start.bat
